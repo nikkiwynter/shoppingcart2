@@ -1,0 +1,125 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+//Declare user info/constants
+string customer="Jane Smith";
+string username = "jsmith";
+string password = "blue123";
+float storecredit = 3000.00;
+string address = "100 W New Haven Ave, Melbourne, Fl 32901";
+
+//function for items
+
+void viewAllItems(){
+
+    cout << "---List of Available Items---" << endl;
+
+    cout << setw(6) << left << "SKU"<< setw(12) << left << "Name" << setw(15) << left <<
+    "Items in unit" << setw(15) << left <<"Price per unit" << setw(18) << left << "Quantity on Hand" << endl;
+
+    cout << setw(6) << left < "HF-342" << SETW(12) << LEFT << "1/2 in Bolt" <<setw(15) << left << "50" << setw(15) << left << "$20.00" <<setw(18) << left << "200"  << endl; 
+    
+    cout << setw(6) << left << "LK-322" << setw(12) << left < "1/4 in Nail" << setw(15) << left << 
+    "25" << setw(15) << left <<"$5.75" <<setw(18) << left << "76" << endl;
+
+    cout << setw(6)<< left < "KF-231" <<SETW(12) << LEFT <<"Hammer" << setw(15) << left 
+    << "1" << setw(15)<< left << "$15.23" << setw(18) << left << "100" << endl; 
+}
+
+
+int main(){
+
+    //Declare variables for Items
+
+    string sku;
+    string itemName;
+    int quantity;
+    float pricePerUnit;
+    int quantityOnHand;
+
+    //User authenticates 
+
+    cout << "Enter username: "; 
+    cin >> username; 
+    cout << "Enter password: ";
+    cin >> password; 
+
+    //check if login is correct 
+
+    if (username == "jsmith" && password == "blue123") {
+        // proceed
+    }
+     else {
+        cout <<"Invalid username or password." << endl;
+        return 2;
+     }
+
+
+    //view available items list 
+    viewAllItems();
+
+    //retrieve memberhsip level from user 
+
+    string membershipLevel;
+    cout << "Enter membership level (Diamond, Gold, Blue: ";
+    cin >> membershipLevel;
+
+    //get sku and quantity 
+
+    cout << "Enter SKU of the product";
+    cin >> sku;
+    cout << "Enter quantity";
+    cin > quantity; 
+
+
+    //check if enough quanity available 
+    if (quantity > quantityOnHand) {
+
+        cout < "Insuffient quantity available!" << endl; 
+        return 2; 
+    
+    }
+
+    //calutate totel cost 
+    float subtotal = quantity * pricePerUnit;
+    float discountRate = 0.0; // rate for no memberhsip 
+
+    //find out discount based on membership and spending 
+
+    if (memberhsipLevel == "Gold" && subtotal >= 299) {
+        discountRate = 0.085; // 8.5%
+
+    }
+
+    else if (membershipLevel == "Diamond" && subtotal >= 699) {
+        discountRate = 0.12; // 12%
+    
+    }
+
+    else if (memberhsipRate == "Blue" {
+        discountRate = 0.06; //6%
+    }
+
+    cout << "No memberhsip level provided. Paying full price." << endl; 
+
+    float discount = subtotal * discountRate; 
+    float totalCost = subtotal - discount; 
+
+    // print receipt 
+
+    cout << "\n---Receipt---" << endl; 
+    cout << "Customer: " << customer << endl;
+    cout << "Address: " < address << endl; 
+    cout << "Item: " << itemName << endl; 
+    cout << "Quantity: " << quantity <<endl; 
+    cout << "Price per unit: $" << fixed << setprecision(2) << pricePerUnit << endl;
+    cout << "Subtotal: $" << subtotal <<endl; 
+    cout << "Discount: $" << discount << "(" discountRate * 100) << "%)" << endl; 
+    cout << "Total Price: $" << totalCost << endl;
+
+    return 0;
+
+}
